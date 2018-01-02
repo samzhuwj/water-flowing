@@ -11,11 +11,8 @@ def poly_features(X, p):
     # ===================== Your Code Here =====================
     # Instructions : Given a vector X, return a matrix X_poly where the p-th
     #                column of X contains the values of X to the p-th power.
-    #
-
-    P = np.arange(1, p + 1)
-
-    X_poly = X.reshape((X.size, 1)) ** P
+    P = np.arange(1, p+1)
+    X_poly = X.reshape((X.size, 1))**P
 
     # ==========================================================
 

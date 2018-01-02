@@ -1,6 +1,7 @@
 import numpy as np
-import trainLinearReg as tlr
-import linearRegCostFunction as lrcf
+
+from trainLinearReg import train_linear_reg
+from linearRegCostFunction import linear_reg_cost_function
 
 
 def validation_curve(X, y, Xval, yval):
@@ -22,14 +23,11 @@ def validation_curve(X, y, Xval, yval):
     #                error_train[i], and error_val[i] should give
     #                you the errors obtained after training with
     #                lmd = lambda_vec[i]
-    #
-
     for i in range(lambda_vec.size):
         lmd = lambda_vec[i]
-        theta = tlr.train_linear_reg(X, y, lmd)
-
-        error_train[i] = lrcf.linear_reg_cost_function(theta, X, y, 0)[0]
-        error_val[i] = lrcf.linear_reg_cost_function(theta, Xval, yval, 0)[0]
+        theta = train_linear_reg(X, y, lmd)
+        error_train[i] = linear_reg_cost_function(theta, X, y, 0)[0]
+        error_val[i] = linear_reg_cost_function(theta, Xval, yval, 0)[0]
 
     # ==========================================================
 

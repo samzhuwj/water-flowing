@@ -1,6 +1,7 @@
 import numpy as np
-import trainLinearReg as tlr
-import linearRegCostFunction as lrcf
+
+from trainLinearReg import train_linear_reg
+from linearRegCostFunction import linear_reg_cost_function
 
 
 def learning_curve(X, y, Xval, yval, lmd):
@@ -31,15 +32,12 @@ def learning_curve(X, y, Xval, yval, lmd):
     #        call the function with the lamdba argument set to 0.
     #        Do note that you will still need to use lamdba when running the
     #        training to obtain the theta parameters.
-    #
-
     for i in range(m):
         x_i = X[:i+1]
         y_i = y[:i+1]
-        theta = tlr.train_linear_reg(x_i, y_i, lmd)
-
-        error_train[i] = lrcf.linear_reg_cost_function(theta, x_i, y_i, 0)[0]
-        error_val[i] = lrcf.linear_reg_cost_function(theta, Xval, yval, 0)[0]
+        theta = train_linear_reg(x_i, y_i, lmd)
+        error_train[i] = linear_reg_cost_function(theta, x_i, y_i, 0)[0]
+        error_val[i] = linear_reg_cost_function(theta, Xval, yval, 0)[0]
 
     # ==========================================================
 
